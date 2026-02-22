@@ -9,7 +9,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   min-height: 100vh;
   padding: 80px 20px;
   font-family: var(--font-geist-sans);
@@ -33,21 +33,41 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
-.title {
-  font-size: 1.5rem;
+.titleWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 24px;
-  color: #1e293b;
   border-bottom: 2px solid #f1f5f9;
   padding-bottom: 12px;
 }
 
+.title {
+  font-size: 1.5rem;
+  margin-bottom: 0;
+  color: #1e293b;
+}
+
+.countInfo {
+  font-size: 14px;
+  color: #64748b;
+  font-weight: 500;
+}
+
 .userList {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.userCardWrapper {
+  display: flex;
+  align-items: center;
+  width: 100%;
 }
 
 .userCard {
+  flex-grow: 1;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -106,10 +126,4 @@
 
 .primary:hover {
   background: #334155;
-}
-
-@media (max-width: 600px) {
-  .userList {
-    grid-template-columns: 1fr;
-  }
 }

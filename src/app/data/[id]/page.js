@@ -75,7 +75,10 @@ export default async function DataDetailPage({ params }) {
           )}
         </div>
 
-        <div className={styles.footer}>
+        <div className={styles.footer} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <Link href={`/data/${id}/edit`} className={styles.backBtn} style={{ color: '#0f172a' }}>
+            ✎ 編輯資料 / Edit
+          </Link>
           <Link href="/" className={styles.backBtn}>
             ← 返回首頁 / Back Home
           </Link>
