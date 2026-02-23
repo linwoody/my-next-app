@@ -9,7 +9,7 @@ export async function GET(request, { params }) {
     if (!ObjectId.isValid(id)) return NextResponse.json({ error: 'Invalid ID' }, { status: 400 })
 
     const client = await clientPromise
-    const db = client.db('my_next_app')
+    const db = client.db(process.env.MONGODB_DB || 'my_next_app')
     const item = await db.collection('test_collection').findOne({ _id: new ObjectId(id) })
 
     if (!item) return NextResponse.json({ error: 'Not found' }, { status: 404 })
@@ -29,7 +29,7 @@ export async function PATCH(request, { params }) {
     const { name, message } = body
 
     const client = await clientPromise
-    const db = client.db('my_next_app')
+    const db = client.db(process.env.MONGODB_DB || 'my_next_app')
     
     const updateData = {}
     if (name) updateData.name = name
@@ -55,7 +55,7 @@ export async function DELETE(request, { params }) {
     if (!ObjectId.isValid(id)) return NextResponse.json({ error: 'Invalid ID' }, { status: 400 })
 
     const client = await clientPromise
-    const db = client.db('my_next_app')
+    const db = client.db(process.env.MONGODB_DB || 'my_next_app')
     const result = await db.collection('test_collection').deleteOne({ _id: new ObjectId(id) })
 
     if (result.deletedCount === 0) return NextResponse.json({ error: 'Not found' }, { status: 404 })

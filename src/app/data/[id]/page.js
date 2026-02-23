@@ -16,7 +16,7 @@ export default async function DataDetailPage({ params }) {
     } else {
       // 2. 直接從資料庫讀取 (Server Component advantage)
       const client = await clientPromise
-      const db = client.db('my_next_app')
+      const db = client.db(process.env.MONGODB_DB || 'my_next_app')
       data = await db.collection('test_collection').findOne({
         _id: new ObjectId(id)
       })

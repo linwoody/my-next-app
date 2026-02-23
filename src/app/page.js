@@ -18,7 +18,7 @@ export default async function Home({ searchParams }) {
 
   try {
     const client = await clientPromise;
-    const db = client.db('my_next_app');
+    const db = client.db(process.env.MONGODB_DB || 'my_next_app');
     const collection = db.collection('test_collection');
     
     // 同時取得資料與總數

@@ -11,7 +11,7 @@ export default async function EditPage({ params }) {
   try {
     if (ObjectId.isValid(id)) {
       const client = await clientPromise
-      const db = client.db('my_next_app')
+      const db = client.db(process.env.MONGODB_DB || 'my_next_app')
       data = await db.collection('test_collection').findOne({ _id: new ObjectId(id) })
     }
   } catch (error) {
